@@ -8,7 +8,7 @@ data:
   datasource.yaml: |-
     apiVersion: 1
     datasources:
-    - name: Prometheus
+    - name: 'Monitoring Prometheus'
       type: prometheus
       access: proxy
       orgId: 1

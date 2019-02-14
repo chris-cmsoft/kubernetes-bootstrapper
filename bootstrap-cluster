@@ -9,5 +9,9 @@ helm init --service-account tiller --wait
 kubectl create namespace monitoring
 helm install stable/prometheus --namespace monitoring --name prometheus
 
+linkerd check --pre
+linkerd install | kubectl apply -f -
+
 kubectl apply -f grafana/config.yml
 helm install -f grafana/values.yml stable/grafana --namespace monitoring --name grafana
+
