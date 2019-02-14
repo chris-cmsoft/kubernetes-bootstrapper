@@ -1,0 +1,13 @@
+#! /bin/bash
+
+
+kubectl apply -f helm/service-account.yml
+kubectl apply -f helm/role-binding.yml
+helm init --service-account tiller --wait
+
+# Monitoring
+kubectl create namespace monitoring
+helm install stable/prometheus --namespace monitoring --name prometheus
+
+kubectl apply -f grafana/config.yml
+helm install -f grafana/values.yml stable/grafana --namespace monitoring --name grafana
